@@ -7,6 +7,12 @@
 using namespace std;
 
 void Game::process(Player &player, Window &window) {
+    if (_runServer) {
+        std::future<void> future_result = std::async(std::launch::async, []() {
+            system(R"("start C:\Users\navid\CLionProjects\ARPG_StoryBoard\cmake-build-debug\Dice_Game_Project.exe" _server)");
+        });
+        _runServer = false;
+    }
     /*************************************************************************/
     /*************************  INDEX  ***************************************/
     /*************************************************************************/
@@ -25,7 +31,6 @@ void Game::process(Player &player, Window &window) {
         window.drawOn(BACKGROUND);
         mapView.displayFromCoordinate(x, y);
     }
-
     /*************************************************************************/
     /*************************  UNITS TESTS  *********************************/
     /*************************************************************************/

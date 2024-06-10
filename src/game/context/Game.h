@@ -5,6 +5,7 @@
 #ifndef ARPG_STORYBOARD_GAME_H
 #define ARPG_STORYBOARD_GAME_H
 
+#include <future>
 #include "core/Player.h"
 #include "game/map/MapView.h"
 #include "util/FrameRate.h"
@@ -22,6 +23,8 @@ public :
 private :
     FrameRate _frameRate;
     MapModel _mapGenerator = MapModel(1);
+
+    bool _runServer = true;
 };
 
 

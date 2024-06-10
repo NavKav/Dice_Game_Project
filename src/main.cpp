@@ -1,6 +1,8 @@
+#include "online/server.h"
 #include "core/Window.h"
 #include "game/menu/MenuWindowContent.h"
 #include "game/context/GameWindowContent.h"
+#include "online/Client.h"
 
 #undef main
 
@@ -9,11 +11,22 @@ using namespace std;
 #include <string>
 #include <iostream>
 #include <filesystem>
+#include <future>
+
 using namespace std::filesystem;
 
 
 int main( int argc, char *argv[] )
 {
+    if (argc == 2 && !strcmp(argv[1], "_server")) {
+        Server server(1998);
+        server.start();
+        return 0;
+    }
+
+    Client client(1998, "127.00.0.1");
+    client.startCommunication();
+
     // (32 x 40) x (32 x 24)
     Window window("ARPG_StoryBoard", 32 * 40, 32 * 24);
     //Player p(window, new MenuWindowContent());

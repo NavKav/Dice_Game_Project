@@ -5,8 +5,11 @@
 #ifndef PROJECTTT_WINDOW_H
 #define PROJECTTT_WINDOW_H
 
+#include <iostream>
 #include <unordered_map>
-#include "requirement.h"
+#include "SDL2/SDL.h"
+#include "SDL_image.h"
+#include "SDL_ttf.h"
 
 #define BACKGROUND (unsigned int)0
 #define DEFAULT (unsigned int)1

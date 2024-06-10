@@ -34,12 +34,18 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/game/unit/UnitView.cpp" "CMakeFiles/Dice_Game_Project.dir/src/game/unit/UnitView.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/game/unit/UnitView.cpp.obj.d"
   "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/game/unit/UnitViewHandler.cpp" "CMakeFiles/Dice_Game_Project.dir/src/game/unit/UnitViewHandler.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/game/unit/UnitViewHandler.cpp.obj.d"
   "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/main.cpp" "CMakeFiles/Dice_Game_Project.dir/src/main.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/main.cpp.obj.d"
+  "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/online/Client.cpp" "CMakeFiles/Dice_Game_Project.dir/src/online/Client.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/online/Client.cpp.obj.d"
+  "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/online/Server.cpp" "CMakeFiles/Dice_Game_Project.dir/src/online/Server.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/online/Server.cpp.obj.d"
   "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/util/FrameRate.cpp" "CMakeFiles/Dice_Game_Project.dir/src/util/FrameRate.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/util/FrameRate.cpp.obj.d"
   "C:/Users/navid/CLionProjects/ARPG_StoryBoard/src/util/Pair.cpp" "CMakeFiles/Dice_Game_Project.dir/src/util/Pair.cpp.obj" "gcc" "CMakeFiles/Dice_Game_Project.dir/src/util/Pair.cpp.obj.d"
   )
 
 # Targets to which this target links which contain Fortran sources.
 set(CMAKE_Fortran_TARGET_LINKED_INFO_FILES
+  )
+
+# Targets to which this target links which contain Fortran sources.
+set(CMAKE_Fortran_TARGET_FORWARD_LINKED_INFO_FILES
   )
 
 # Fortran module output directory.

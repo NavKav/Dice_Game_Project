@@ -5,8 +5,6 @@
 #ifndef DICE_GAME_PROJECT_WINDOWCONTENT_H
 #define DICE_GAME_PROJECT_WINDOWCONTENT_H
 
-#include "requirement.h"
-#include "Input.h"
 #include "Window.h"
 
 class Player;

@@ -12,7 +12,6 @@ _window(window)
 }
 
 void Player::start() {
-    unsigned int i= 0;
     while(_boolLoop) {
         SDL_Event input;
         while(SDL_PollEvent(&input)){takeInput(input);}
@@ -26,7 +25,7 @@ void Player::stop() {
 
 
 Player::~Player() {
-    if (_windowContent) {delete _windowContent;}
+    delete _windowContent;
 }
 
 bool Player::takeInput(const SDL_Event &event) {
@@ -81,7 +80,7 @@ void Player::getMousePosition(int& x, int& y) {
 }
 
 void Player::setWindowContent(WindowContent *windowContent) {
-    if (_windowContent) {delete _windowContent;}
+    delete _windowContent;
     _windowContent = windowContent;
 }
 

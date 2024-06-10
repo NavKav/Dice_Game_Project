@@ -32,10 +32,18 @@ file(GLOB_RECURSE SOURCES
         src/*/*/*/*/*.cpp
         )
 
-add_executable(Dice_Game_Project ${SOURCES})
+add_executable(Dice_Game_Project ${SOURCES}
+        src/online/Server.h
+        src/online/Client.h)
 #TFF
 include_directories(${PROJECT_SOURCE_DIR}/src ${SDL2_IMAGE_INCLUDE_DIR} ${SDL2_TTF_INCLUDE_DIR}) #inclusion des dossier nécessaire pour le
 #développement avec SDL2
 #TFF
 target_link_libraries(Dice_Game_Project ${SDL2_LIBRARY} ${SDL2_IMAGE_LIBRARY} ${SDL2_TTF_LIBRARY}) #inclusion des bibliothèques nécessaire pour
 #le développement avec SDL2
+
+if(WIN32)
+        target_link_libraries(Dice_Game_Project wsock32 ws2_32)
+elseif(UNIX)
+        target_link_libraries(Dice_Game_Project pthread)
+endif()

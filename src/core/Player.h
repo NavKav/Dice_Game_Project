@@ -9,14 +9,18 @@
 #ifndef PROJECTTT_PLAYER_H
 #define PROJECTTT_PLAYER_H
 
-#include "requirement.h"
 #include "WindowContent.h"
 #include "Window.h"
-//#include "Input.h"
 
 #define NUM_SDLK 1000 // maximum range of SDL key number
 #define SDL_SCANCODE_RIGHTCLICK NUM_SDLK - 1
 #define SDL_SCANCODE_LEFTCLICK NUM_SDLK - 2
+
+struct Input {
+    bool pressed;
+    long int u,v;
+    Sint32 mouseX = 0, mouseY = 0;
+};
 
 class Player {
 public :
