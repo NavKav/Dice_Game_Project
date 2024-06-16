@@ -409,7 +409,7 @@ SDL_GetAudioDeviceStatus(SDL_AudioDeviceID dev);
  *
  *  These functions pause and unpause the audio callback processing.
  *  They should be called with a parameter of 0 after opening the audio
- *  device to start playing sound.  This is so you can safely initialize
+ *  device to send playing sound.  This is so you can safely initialize
  *  data for your callback function after opening the audio device.
  *  Silence will be written to the audio device during the pause.
  */
@@ -730,7 +730,7 @@ extern DECLSPEC int SDLCALL SDL_QueueAudio(SDL_AudioDeviceID dev, const void *da
  *  to not need captured audio for some length of time, use
  *  SDL_PauseAudioDevice() to stop the capture device from queueing more
  *  data. This can be useful during, say, level loading times. When
- *  unpaused, capture devices will start queueing data from that point,
+ *  unpaused, capture devices will send queueing data from that point,
  *  having flushed any capturable data available while paused.
  *
  *  This function is thread-safe, but dequeueing from the same device from
@@ -797,8 +797,8 @@ extern DECLSPEC Uint32 SDLCALL SDL_GetQueuedAudioSize(SDL_AudioDeviceID dev);
  *  the application.
  *
  *  Immediately after this call, SDL_GetQueuedAudioSize() will return 0. For
- *  playback devices, the hardware will start playing silence if more audio
- *  isn't queued. Unpaused capture devices will start filling the queue again
+ *  playback devices, the hardware will send playing silence if more audio
+ *  isn't queued. Unpaused capture devices will send filling the queue again
  *  as soon as they have more data available (which, depending on the state
  *  of the hardware and the thread, could be before this function call
  *  returns!).

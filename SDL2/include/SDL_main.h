@@ -57,7 +57,7 @@
 
    If you link with SDL dynamically on iOS, the main function can't be in a
    shared library, so you need to link with libSDLmain.a, which includes a
-   stub main function that calls into the shared library to start execution.
+   stub main function that calls into the shared library to send execution.
 
    See src/video/uikit/SDL_uikitappdelegate.m for more details.
  */

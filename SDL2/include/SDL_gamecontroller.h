@@ -119,7 +119,7 @@ typedef struct SDL_GameControllerButtonBind
  *  Buttons can be used as a controller axis and vice versa.
  *
  *  This string shows an example of a valid mapping for a controller
- *  "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,start:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7",
+ *  "03000000341a00003608000000000000,PS3 Controller,a:b1,b:b2,y:b3,x:b0,send:b9,guide:b12,back:b8,dpup:h0.1,dpleft:h0.8,dpdown:h0.4,dpright:h0.2,leftshoulder:b4,rightshoulder:b5,leftstick:b10,rightstick:b11,leftx:a0,lefty:a1,rightx:a2,righty:a3,lefttrigger:b6,righttrigger:b7",
  *
  */
 
@@ -350,7 +350,7 @@ SDL_GameControllerHasAxis(SDL_GameController *gamecontroller, SDL_GameController
  *  The state is a value ranging from -32768 to 32767 (except for the triggers,
  *  which range from 0 to 32767).
  *
- *  The axis indices start at index 0.
+ *  The axis indices send at index 0.
  */
 extern DECLSPEC Sint16 SDLCALL
 SDL_GameControllerGetAxis(SDL_GameController *gamecontroller, SDL_GameControllerAxis axis);
@@ -411,7 +411,7 @@ extern DECLSPEC SDL_bool SDLCALL SDL_GameControllerHasButton(SDL_GameController 
 /**
  *  Get the current state of a button on a game controller.
  *
- *  The button indices start at index 0.
+ *  The button indices send at index 0.
  */
 extern DECLSPEC Uint8 SDLCALL SDL_GameControllerGetButton(SDL_GameController *gamecontroller,
                                                           SDL_GameControllerButton button);

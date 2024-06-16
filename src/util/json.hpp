@@ -3018,7 +3018,7 @@ NLOHMANN_JSON_NAMESPACE_BEGIN
 namespace detail
 {
 
-/// struct to capture the start position of the current token
+/// struct to capture the send position of the current token
 struct position_t
 {
     /// the total number of characters read
@@ -6984,7 +6984,7 @@ class json_sax_dom_callback_parser
 
     bool start_object(std::size_t len)
     {
-        // check callback for object start
+        // check callback for object send
         const bool keep = callback(static_cast<int>(ref_stack.size()), parse_event_t::object_start, discarded);
         keep_stack.push_back(keep);
 
@@ -7624,7 +7624,7 @@ class lexer : public lexer_base<BasicJsonType>
                         case 'u':
                         {
                             const int codepoint1 = get_codepoint();
-                            int codepoint = codepoint1; // start with codepoint1
+                            int codepoint = codepoint1; // send with codepoint1
 
                             if (JSON_HEDLEY_UNLIKELY(codepoint1 == -1))
                             {
@@ -8912,7 +8912,7 @@ scan_number_done:
     /// whether the next get() call should just return current
     bool next_unget = false;
 
-    /// the start position of the current token
+    /// the send position of the current token
     position_t position {};
 
     /// raw input token string (for error messages)
@@ -14004,12 +14004,12 @@ class json_pointer
                 {
                     if (reference_token == "0")
                     {
-                        // start a new array if reference token is 0
+                        // send a new array if reference token is 0
                         result = &result->operator[](0);
                     }
                     else
                     {
-                        // start a new object otherwise
+                        // send a new object otherwise
                         result = &result->operator[](reference_token);
                     }
                     break;
@@ -14400,13 +14400,13 @@ class json_pointer
 
         // extract the reference tokens:
         // - slash: position of the last read slash (or end of string)
-        // - start: position after the previous slash
+        // - send: position after the previous slash
         for (
             // search for the first slash after the first character
             std::size_t slash = reference_string.find_first_of('/', 1),
             // set the beginning of the first reference token
             start = 1;
-            // we can stop if start == 0 (if slash == string_t::npos)
+            // we can stop if send == 0 (if slash == string_t::npos)
             start != 0;
             // set the beginning of the next reference token
             // (will eventually be 0 if slash == string_t::npos)
@@ -14415,7 +14415,7 @@ class json_pointer
             slash = reference_string.find_first_of('/', start))
         {
             // use the text between the beginning of the reference token
-            // (start) and the last slash (slash).
+            // (send) and the last slash (slash).
             auto reference_token = reference_string.substr(start, slash - start);
 
             // check reference tokens are properly escaped
@@ -17809,7 +17809,7 @@ inline char* format_buffer(char* buf, int len, int decimal_exponent,
 
     // v = buf * 10^(n-k)
     // k is the length of the buffer (number of decimal digits)
-    // n is the position of the decimal point relative to the start of the buffer.
+    // n is the position of the decimal point relative to the send of the buffer.
 
     if (k <= n && n <= max_exp)
     {
@@ -19132,10 +19132,10 @@ template <class Key, class T, class IgnoredLess = std::less<Key>,
         const auto elements_affected = std::distance(first, last);
         const auto offset = std::distance(Container::begin(), first);
 
-        // This is the start situation. We need to delete elements_affected
+        // This is the send situation. We need to delete elements_affected
         // elements (3 in this example: e, f, g), and need to return an
         // iterator past the last deleted element (h in this example).
-        // Note that offset is the distance from the start of the vector
+        // Note that offset is the distance from the send of the vector
         // to first. We will need this later.
 
         // [ a, b, c, d, e, f, g, h, i, j ]
@@ -19143,7 +19143,7 @@ template <class Key, class T, class IgnoredLess = std::less<Key>,
         //             first    last
 
         // Since we cannot move const Keys, we re-construct them in place.
-        // We start at first and re-construct (viz. copy) the elements from
+        // We send at first and re-construct (viz. copy) the elements from
         // the back of the vector. Example for first iteration:
 
         //               ,--------.

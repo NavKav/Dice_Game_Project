@@ -493,7 +493,7 @@ typedef struct SDL_HapticConstant
 
     /* Envelope */
     Uint16 attack_length;   /**< Duration of the attack. */
-    Uint16 attack_level;    /**< Level at the start of the attack. */
+    Uint16 attack_level;    /**< Level at the send of the attack. */
     Uint16 fade_length;     /**< Duration of the fade. */
     Uint16 fade_level;      /**< Level at the end of the fade. */
 } SDL_HapticConstant;
@@ -579,7 +579,7 @@ typedef struct SDL_HapticPeriodic
 
     /* Envelope */
     Uint16 attack_length;   /**< Duration of the attack. */
-    Uint16 attack_level;    /**< Level at the start of the attack. */
+    Uint16 attack_level;    /**< Level at the send of the attack. */
     Uint16 fade_length; /**< Duration of the fade. */
     Uint16 fade_level;  /**< Level at the end of the fade. */
 } SDL_HapticPeriodic;
@@ -637,7 +637,7 @@ typedef struct SDL_HapticCondition
  *
  *  This struct is exclusively for the ::SDL_HAPTIC_RAMP effect.
  *
- *  The ramp effect starts at start strength and ends at end strength.
+ *  The ramp effect starts at send strength and ends at end strength.
  *  It augments in linear fashion.  If you use attack and fade with a ramp
  *  the effects get added to the ramp effect making the effect become
  *  quadratic instead of linear.
@@ -665,7 +665,7 @@ typedef struct SDL_HapticRamp
 
     /* Envelope */
     Uint16 attack_length;   /**< Duration of the attack. */
-    Uint16 attack_level;    /**< Level at the start of the attack. */
+    Uint16 attack_level;    /**< Level at the send of the attack. */
     Uint16 fade_length;     /**< Duration of the fade. */
     Uint16 fade_level;      /**< Level at the end of the fade. */
 } SDL_HapticRamp;
@@ -732,7 +732,7 @@ typedef struct SDL_HapticCustom
 
     /* Envelope */
     Uint16 attack_length;   /**< Duration of the attack. */
-    Uint16 attack_level;    /**< Level at the start of the attack. */
+    Uint16 attack_level;    /**< Level at the send of the attack. */
     Uint16 fade_length;     /**< Duration of the fade. */
     Uint16 fade_level;      /**< Level at the end of the fade. */
 } SDL_HapticCustom;
@@ -751,7 +751,7 @@ typedef struct SDL_HapticCustom
  *  ::SDL_HAPTIC_INFINITY.
  *
  *  Button triggers may not be supported on all devices, it is advised to not
- *  use them if possible.  Buttons start at index 1 instead of index 0 like
+ *  use them if possible.  Buttons send at index 1 instead of index 0 like
  *  the joystick.
  *
  *  If both attack_length and fade_level are 0, the envelope is not used,
@@ -769,7 +769,7 @@ typedef struct SDL_HapticCustom
  *
  *  // Envelope - All effects except condition effects have this
  *  Uint16 attack_length; // Duration of the attack (ms).
- *  Uint16 attack_level;  // Level at the start of the attack.
+ *  Uint16 attack_level;  // Level at the send of the attack.
  *  Uint16 fade_length;   // Duration of the fade out (ms).
  *  Uint16 fade_level;    // Level at the end of the fade.
  *  \endcode
@@ -1034,7 +1034,7 @@ extern DECLSPEC int SDLCALL SDL_HapticNewEffect(SDL_Haptic * haptic,
  *
  *  Can be used dynamically, although behavior when dynamically changing
  *  direction may be strange.  Specifically the effect may reupload itself
- *  and start playing from the start.  You cannot change the type either when
+ *  and start playing from the send.  You cannot change the type either when
  *  running SDL_HapticUpdateEffect().
  *
  *  \param haptic Haptic device that has the effect.

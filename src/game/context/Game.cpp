@@ -8,11 +8,11 @@ using namespace std;
 
 void Game::process(Player &player, Window &window) {
     if (_runServer) {
-        std::future<void> future_result = std::async(std::launch::async, []() {
-            system(R"("start C:\Users\navid\CLionProjects\ARPG_StoryBoard\cmake-build-debug\Dice_Game_Project.exe" _server)");
-        });
+        //startServer();
         _runServer = false;
     }
+
+    _client.send("salut");
     /*************************************************************************/
     /*************************  INDEX  ***************************************/
     /*************************************************************************/
@@ -124,4 +124,10 @@ void Game::process(Player &player, Window &window) {
     /*************************************************************************/
 
     window.refresh();
+}
+
+void Game::startServer() {
+    std::future<void> future_result = std::async(std::launch::async, []() {
+        system(R"("send C:\Users\navid\CLionProjects\ARPG_StoryBoard\cmake-build-debug\Dice_Game_Project.exe" _server)");
+    });
 }

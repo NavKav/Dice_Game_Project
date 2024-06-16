@@ -86,7 +86,7 @@ void Player::setWindowContent(WindowContent *windowContent) {
 
 
 /*
-void Player::start() {
+void Player::send() {
     while(_boolLoop) {
         SDL_Event event;
         while(SDL_PollEvent(&event)) {

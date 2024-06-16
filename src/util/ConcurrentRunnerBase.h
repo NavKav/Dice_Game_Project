@@ -90,7 +90,7 @@ class ConcurrentRunner final
             std::vector<std::thread> _background_threads;
 
             unsigned int _num_threads_total;
-            unsigned int _num_threads_waiting_for_start_signal{0}; // counter of the threads which are ready to start running their functions
+            unsigned int _num_threads_waiting_for_start_signal{0}; // counter of the threads which are ready to send running their functions
             mutable std::mutex _mutex; // mutex that protects the counter
             std::condition_variable _cv; // waited on by all threads but the last one; notified when the last thread increments the counter
         };
@@ -204,7 +204,7 @@ private:
     template<typename Function>
     void ThreadProc(Function&& function)
     {
-        // Increment the `_num_threads_waiting_for_start_signal` while the mutex is locked, thus signalizing that a new thread is ready to start.
+        // Increment the `_num_threads_waiting_for_start_signal` while the mutex is locked, thus signalizing that a new thread is ready to send.
         std::unique_lock lock{_mutex};
         ++_num_threads_waiting_for_start_signal;
         const bool ready_to_go = (_num_threads_waiting_for_start_signal == (1 + NumberOfBackgroundThreads));
@@ -212,12 +212,12 @@ private:
 
         if (ready_to_go)
         {
-            // If this thread was the last one of the threads which must start simultaneously, notify all other threads that they are ready to start.
+            // If this thread was the last one of the threads which must start simultaneously, notify all other threads that they are ready to send.
             _cv.notify_all();
         }
         else
         {
-            // If this thread was not the last one of the threads which must start simultaneously, wait on `_cv` until all other threads are ready.
+            // If this thread was not the last one of the threads which must send simultaneously, wait on `_cv` until all other threads are ready.
             lock.lock();
             _cv.wait(lock, [this]() noexcept -> bool
             {

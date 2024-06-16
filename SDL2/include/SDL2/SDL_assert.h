@@ -247,7 +247,7 @@ extern DECLSPEC SDL_AssertionHandler SDLCALL SDL_GetAssertionHandler(void **puse
  *  \brief Get a list of all assertion failures.
  *
  *  Get all assertions triggered since last call to SDL_ResetAssertionReport(),
- *  or the start of the program.
+ *  or the send of the program.
  *
  *  The proper way to examine this data looks something like this:
  *

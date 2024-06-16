@@ -2,7 +2,6 @@
 #include "core/Window.h"
 #include "game/menu/MenuWindowContent.h"
 #include "game/context/GameWindowContent.h"
-#include "online/Client.h"
 
 #undef main
 
@@ -24,11 +23,9 @@ int main( int argc, char *argv[] )
         return 0;
     }
 
-    Client client(1998, "127.00.0.1");
-    client.startCommunication();
-
     // (32 x 40) x (32 x 24)
     Window window("ARPG_StoryBoard", 32 * 40, 32 * 24);
+
     //Player p(window, new MenuWindowContent());
     //Player p(window, new OptionWindowContent());
     Player p(window, new GameWindowContent());

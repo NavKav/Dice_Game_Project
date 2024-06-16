@@ -16,13 +16,16 @@
 #include "game/unit/HeroView.h"
 #include "game/index/UnitIndex.h"
 #include "game/index/BlockIndex.h"
+#include "online/Client.h"
 
 class Game {
 public :
     void process(Player& player, Window& window);
+    void startServer();
 private :
     FrameRate _frameRate;
     MapModel _mapGenerator = MapModel(1);
+    Client _client = Client(1998, "127.0.0.1");
 
     bool _runServer = true;
 };

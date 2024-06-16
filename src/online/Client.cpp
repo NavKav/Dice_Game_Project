@@ -24,20 +24,14 @@ Client::~Client() {
     closeSocket(_clientSocket);
 }
 
-void Client::startCommunication() {
-    char message[256];
-    printf("Enter message: ");
-    cin.getline(message, 256);
+void Client::send(string s) {
+    char * message = const_cast<char *>(s.c_str());
     while (sendto(_clientSocket, message, strlen(message), 0, (sockaddr*)&_server, sizeof(sockaddr_in)) == SOCKET_ERROR) {
         cout << "sendto() failed with error code: " << getSocketError() << endl;
         exit(EXIT_FAILURE);
     }
-    char answer[256] = {};
-    int slen = sizeof(sockaddr_in);
-    int answer_length;
-    while ((answer_length = recvfrom(_clientSocket, answer, 256, 0, (sockaddr*)&_server, &slen)) == SOCKET_ERROR) {
+    /*while ((answer_length = recvfrom(_clientSocket, answer, 256, 0, (sockaddr*)&_server, &slen)) == SOCKET_ERROR) {
         cout << "recvfrom() failed with error code: " << getSocketError() << endl;
         exit(EXIT_FAILURE);
-    }
-    cout << "Server's response: " << answer << "\n";
+    }*/
 }

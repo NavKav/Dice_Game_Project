@@ -11,7 +11,7 @@ class Client {
 public:
     Client(int port, const std::string& ip);
     ~Client();
-    void startCommunication();
+    void send(std::string s);
 
 private:
     SOCKET _clientSocket;

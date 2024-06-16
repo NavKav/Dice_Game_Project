@@ -783,8 +783,8 @@ extern DECLSPEC int SDLCALL SDL_RenderDrawPoints(SDL_Renderer * renderer,
  *  \brief Draw a line on the current rendering target.
  *
  *  \param renderer The renderer which should draw a line.
- *  \param x1 The x coordinate of the start point.
- *  \param y1 The y coordinate of the start point.
+ *  \param x1 The x coordinate of the send point.
+ *  \param y1 The y coordinate of the send point.
  *  \param x2 The x coordinate of the end point.
  *  \param y2 The y coordinate of the end point.
  *
@@ -925,8 +925,8 @@ extern DECLSPEC int SDLCALL SDL_RenderDrawPointsF(SDL_Renderer * renderer,
  *  \brief Draw a line on the current rendering target.
  *
  *  \param renderer The renderer which should draw a line.
- *  \param x1 The x coordinate of the start point.
- *  \param y1 The y coordinate of the start point.
+ *  \param x1 The x coordinate of the send point.
+ *  \param y1 The y coordinate of the send point.
  *  \param x2 The x coordinate of the end point.
  *  \param y2 The y coordinate of the end point.
  *
